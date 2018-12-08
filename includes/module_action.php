@@ -46,11 +46,11 @@ if($service != "") {
         if ( 0 < filesize( $mod_logs ) ) {
             $exec = "$bin_cp $mod_logs $mod_logs_history/".gmdate("Ymd-H-i-s").".log";
             //exec("$bin_danger \"$exec\"" ); //DEPRECATED
-            exec_fruitywifi($exec);
+            exec_blackbulb($exec);
             
             $exec = "$bin_echo '' > $mod_logs";
             //exec("$bin_danger \"$exec\"" ); //DEPRECATED
-            exec_fruitywifi($exec);
+            exec_blackbulb($exec);
         }
     
         // ADD selected options
@@ -67,7 +67,7 @@ if($service != "") {
                     //$exec = "/usr/bin/etterfilter templates/" . $mode_options["F"][2] ." -o $mod_path/includes/filter.ef";
                     $exec = "$bin_etterfilter templates/" . $mode_options["F"][2];
                     //exec("$bin_danger \"$exec\"" ); //DEPRECATED
-                    exec_fruitywifi($exec);
+                    exec_blackbulb($exec);
                     $options .= " -F $mod_path/includes/filter.ef ";
                 } else {
                     $options .= " -" . $tmp[$i] . " " . $mode_options[$tmp[$i]][2];
@@ -90,24 +90,24 @@ if($service != "") {
         
         $exec = "$bin_ettercap -T $options -i $io_action >> $mod_logs &";        
         //exec("$bin_danger \"$exec\"" ); //DEPRECATED
-        exec_fruitywifi($exec);
+        exec_blackbulb($exec);
 
 		
     } else if($action == "stop") {
         // STOP MODULE
         $exec = "$bin_killall $mod_name";
         //exec("$bin_danger \"$exec\"" ); //DEPRECATED
-        exec_fruitywifi($exec);
+        exec_blackbulb($exec);
         
         // COPY LOG
         if ( 0 < filesize( $mod_logs ) ) {
             $exec = "$bin_cp $mod_logs $mod_logs_history/".gmdate("Ymd-H-i-s").".log";
             //exec("$bin_danger \"$exec\"" ); //DEPRECATED
-            exec_fruitywifi($exec);
+            exec_blackbulb($exec);
             
             $exec = "$bin_echo '' > $mod_logs";
             //exec("$bin_danger \"$exec\"" ); //DEPRECATED
-            exec_fruitywifi($exec);
+            exec_blackbulb($exec);
         }
 
 	$wait = 4;
@@ -120,11 +120,11 @@ if ($install == "install_$mod_name") {
 
     $exec = "chmod 755 install.sh";
     //exec("$bin_danger \"$exec\"" ); //DEPRECATED
-    exec_fruitywifi($exec);
+    exec_blackbulb($exec);
 
     $exec = "$bin_sudo ./install.sh > $log_path/install.txt &";
     //exec("$bin_danger \"$exec\"" ); //DEPRECATED
-    exec_fruitywifi($exec);
+    exec_blackbulb($exec);
 
     header('Location: ../../install.php?module='.$mod_name);
     exit;

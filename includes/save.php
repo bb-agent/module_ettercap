@@ -56,7 +56,7 @@ if ($type == "mode_ettercap") {
         //echo $tmp[$i]."<br>";
         
         $exec = "/bin/sed -i 's/mode_options\\[\\\"".$tmp[$i]."\\\"\\]\\[0\\].*/mode_options\\[\\\"".$tmp[$i]."\\\"\\]\\[0\\] = 0;/g' options_config.php";
-        $output = exec_fruitywifi($exec);
+        $output = exec_blackbulb($exec);
         
     }
 
@@ -65,22 +65,22 @@ if ($type == "mode_ettercap") {
         //echo $tmp[$i]."<br>";
         
         $exec = "/bin/sed -i 's/mode_options\\[\\\"".$tmp[$i]."\\\"\\]\\[0\\].*/mode_options\\[\\\"".$tmp[$i]."\\\"\\]\\[0\\] = 1;/g' options_config.php";
-        $output = exec_fruitywifi($exec);
+        $output = exec_blackbulb($exec);
         
     }
 
 	// MITM
 	$exec = "/bin/sed -i 's/mode_options\\[\\\"M\\\"\\]\\[2\\].*/mode_options\\[\\\"M\\\"\\]\\[2\\] = \\\"$mitm_type\\\";/g' options_config.php";
-    $output = exec_fruitywifi($exec);
+    $output = exec_blackbulb($exec);
 	
 	$mitm_value = str_replace("/","\\\/",$mitm_value);
 	
 	$exec = "/bin/sed -i 's/mode_options\\[\\\"M\\\"\\]\\[4\\].*/mode_options\\[\\\"M\\\"\\]\\[4\\] = \\\"$mitm_value\\\";/g' options_config.php";
-    $output = exec_fruitywifi($exec);
+    $output = exec_blackbulb($exec);
 	
 	// FILTER
 	$exec = "/bin/sed -i 's/mode_options\\[\\\"F\\\"\\]\\[2\\].*/mode_options\\[\\\"F\\\"\\]\\[2\\] = \\\"$filter_name\\\";/g' options_config.php";
-    $output = exec_fruitywifi($exec);
+    $output = exec_blackbulb($exec);
     //echo $exec."<br>";
 
     header('Location: ../index.php?tab=1');
@@ -100,7 +100,7 @@ if ($type == "templates") {
 					$newdata = preg_replace("/[\n\r]/",  "", $newdata);
                     $template_path = "$mod_path/includes/templates";
                     $exec = "/bin/echo '$newdata' | base64 --decode > $template_path/$tempname";
-                    $output = exec_fruitywifi($exec);
+                    $output = exec_blackbulb($exec);
                 }
             }
     	
@@ -111,7 +111,7 @@ if ($type == "templates") {
                 if ($new_rename_file != "") {
                     $template_path = "$mod_path/includes/templates";
                     $exec = "/bin/touch $template_path/$new_rename_file";
-                    $output = exec_fruitywifi($exec);
+                    $output = exec_blackbulb($exec);
 
                     $tempname=$new_rename_file;
                 }
@@ -119,7 +119,7 @@ if ($type == "templates") {
                 //RENAME TEMPLATE
                 $template_path = "$mod_path/includes/templates";
                 $exec = "/bin/mv $template_path/$new_rename $template_path/$new_rename_file";
-                $output = exec_fruitywifi($exec);
+                $output = exec_blackbulb($exec);
 
                 $tempname=$new_rename_file;
             }
@@ -129,7 +129,7 @@ if ($type == "templates") {
                 //DELETE TEMPLATE
                 $template_path = "$mod_path/includes/templates";
                 $exec = "/bin/rm $template_path/$new_rename";
-                exec_fruitywifi($exec);
+                exec_blackbulb($exec);
             }
 	}
 	header("Location: ../index.php?tab=2&tempname=$tempname");

@@ -1,7 +1,7 @@
 module_ettercap
 ===========
 
-FruityWifi ettercap module
+BlackBulb ettercap module
 
 
 v1.3

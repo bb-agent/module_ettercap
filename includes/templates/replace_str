@@ -7,6 +7,6 @@ if (ip.proto == TCP && tcp.dst == 80) {
 }
 
 if (ip.proto == TCP && tcp.src == 80) {
-   replace("noticias", "FruityWifi");
+   replace("noticias", "BlackBulb");
    msg("Filter Ran.\n");
 }
